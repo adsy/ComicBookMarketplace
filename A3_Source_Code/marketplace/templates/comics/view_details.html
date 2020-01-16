@@ -1,0 +1,82 @@
+<!-- Links to base html and imports WTForms -->
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+
+<main class="container-fluid">
+    <div>
+        <h1 class="text-white">View Details</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 pr-5">
+                <div class="col-md-4">
+                    <img class="card" src="{{comic.comicImage}}" alt="image not available" height="540" width="360">
+                </div>
+            </div>
+            <!--Comic Description Displayed-->
+            <div class="col-md-6 pl-5 text-white">
+                <h1 class="card-title"><b>{{comic.comicTitle}}</b></h1>
+                <h3 class="card-text"><b>Author</b>: {{comic.comicAuthor}}</h3>
+                <p class="card-text"><b>Category</b>: {{comic.comicCategory}}</p>
+                <p class="card-text"><b>ISBN-10</b>: {{comic.comicISBN}}</p>
+                <p class="card-text"><b>Price</b>: ${{comic.comicPrice}}</p>
+                <p class="card-text"><b>Seller</b>: {{user.name}}</p>
+                <p class="card-text"><b>Description</b>: {{comic.comicDescription}}</p>
+                {% if comic.live ==True %}
+                <p class="card-text"><b>Availability</b>: <span class="text-success">Available</span></p>
+                {% else %}
+                <p class="card-text"><b>Availability</b>: <span class="text-danger">Not Available</span></p>
+                {% endif %}
+
+
+                <!--A modal to input user contact details-->
+                {% if comic.live==True %}
+                <!--If comic status is avaiable, modal box will show-->
+                <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ModalLabel">
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <article class="card">
+                                    <div class="card-body">
+
+                                        {{wtf.quick_form(form)}}
+                                        <link rel="stylesheet" href="../../static/css/formsInput.css" type="text/css">
+                                        <link rel="stylesheet" href="../../static/css/buttons.css" type="text/css">
+
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-dismiss="modal">Cancel Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Send bid button-->
+                <button type="button btn-width" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal">
+                    Send Bid
+                </button>
+                {% endif %}
+            </div>
+
+
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="../../static/css/style.css" type="text/css">
+    </div>
+</main>
+{% endblock %}

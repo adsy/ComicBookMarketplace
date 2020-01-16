@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main class="container-fluid">
+    <section class=card-deck-container>
+
+        <!-- Previous Transactions -->
+        <div>
+            <h1 class="text-white">Your past sales</h1>
+        </div>
+
+        {%if length == 0%}
+        <div>
+            </br>
+            <h2 align="center" class="py-5 text-white">You currently have no previous sales!</h2>
+            </br>
+        </div>
+        {% endif %}
+
+        <div class="card-deck row">
+
+            <link rel="stylesheet" href="../../static/css/style.css" type="text/css">
+
+            <!-- Loop card for each item being sold-->
+            {%for i in range(0, length)%}
+            {% if i%4 == 0 %}
+            <div class="col-sm-3 py-2 justify-content-center">
+                <div class="card">
+                    <img class="card-img-top card-img" src="{{orders[i].comicImage}}" alt="image not available">
+                    <div class="card-body">
+                        <h3 class="card-title">{{orders[i].comicTitle}}</h3>
+                        <p class="card-text"><b>Sale Price</b>: ${{orders[i].comicPrice}}</p>
+                        <p class="card-text"><b>Buyer Name</b>: {{orders[i].buyerName}}</p>
+                        <p class="card-text"><b>Buyer Email</b>: {{orders[i].buyerEmail}}</p>
+                        <p class="card-text"><b>Date of Purchase</b>: {{orders[i].purchaseTime}}</p>
+                        <p class="card-text"><b>Buyer Email</b>: {{orders[i].buyerEmail}}</p>
+
+
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            {% elif i%4 == 1  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <img class="card-img-top card-img" src="{{orders[i].comicImage}}" alt="image not available">
+                    <div class="card-body">
+                        <h3 class="card-title">{{orders[i].comicTitle}}</h3>
+                        <p class="card-text"><b>Sale Price</b>: ${{orders[i].comicPrice}}</p>
+                        <p class="card-text"><b>Buyer Name</b>: {{orders[i].buyerName}}</p>
+                        <p class="card-text"><b>Buyer Email</b>: {{orders[i].buyerEmail}}</p>
+                        <p class="card-text"><b>Date of Purchase</b>: {{orders[i].purchaseTime}}</p>
+                        <p class="card-text"><b>Buyer Email</b>: {{orders[i].buyerEmail}}</p>
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            {% elif i%4 == 2  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <img class="card-img-top card-img" src="{{orders[i].comicImage}}" alt="image not available">
+                    <div class="card-body">
+                        <h3 class="card-title">{{orders[i].comicTitle}}</h3>
+                        <p class="card-text"><b>Sale Price</b>: ${{orders[i].comicPrice}}</p>
+                        <p class="card-text"><b>Buyer Name</b>: {{orders[i].buyerName}}</p>
+                        <p class="card-text"><b>Buyer Email</b>: {{orders[i].buyerEmail}}</p>
+                        <p class="card-text"><b>Date of Purchase</b>: {{orders[i].purchaseTime}}</p>
+                        <p class="card-text"><b>Buyer Email</b>: {{orders[i].buyerEmail}}</p>
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            {% else  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <img class="card-img-top card-img" src="{{orders[i].comicImage}}" alt="image not available">
+                    <div class="card-body">
+                        <h3 class="card-title">{{orders[i].comicTitle}}</h3>
+                        <p class="card-text"><b>Sale Price</b>: ${{orders[i].comicPrice}}</p>
+                        <p class="card-text"><b>Buyer Name</b>: {{orders[i].buyerName}}</p>
+                        <p class="card-text"><b>Buyer Email</b>: {{orders[i].buyerEmail}}</p>
+                        <p class="card-text"><b>Date of Purchase</b>: {{orders[i].purchaseTime}}</p>
+                        <p class="card-text"><b>Buyer Email</b>: {{orders[i].buyerEmail}}</p>
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+
+    </section>
+
+</main>
+
+
+{% endblock %}

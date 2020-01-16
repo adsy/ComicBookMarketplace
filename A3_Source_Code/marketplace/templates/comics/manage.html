@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<!-- Main Content Start -->
+<main class="container-fluid">
+    <section class=card-deck-container>
+
+        <!-- Top Selling Featured Comics -->
+        <div>
+            <h1 class="pt-3 text-white">Dashboard</h1>
+        </div>
+
+
+        <!-- Sell Comic or View Past Transaction Container-->
+        <div class="row justify-content-center">
+
+            <!-- First Row container -->
+            <div class="col-md-6">
+
+                <!--Jumbotron for Hero Section -->
+                <div class="jumbotron-fluid shadow rounded" style="background-image: url(header.jpg);">
+                    <div class="row justify-content-center mt-5 pb-0">
+                        <div class="col-md-12">
+                            <div class="jumbotron bg-colour shadow py-4 mb-4 ">
+
+                                <div class="py-0 mb-4 page-title text-white">
+                                    <h1 class="page-title text-white text-center">Sell Comic
+                                    </h1>
+                                </div>
+
+                                <div class="col text-center py-1 mb-1">
+                                    <div class="col text-center">
+                                        <a href="{{ url_for('comic.create') }}">
+                                            <img class="align-self-center mr-3" style="max-height: 80px"
+                                                src="../../static/image/add_red.png">
+
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- First Row container -->
+            <div class="col-md-6">
+
+                <!--Jumbotron for Hero Section -->
+                <div class="jumbotron-fluid shadow rounded" style="background-image: url(header.jpg);">
+                    <div class="row justify-content-center mt-5 pb-0">
+                        <div class="col-md-12">
+                            <div class="jumbotron bg-colour shadow py-4 mb-4 ">
+
+                                <div class="py-0 mb-4 text-white">
+                                    <h1 class="page-title text-white text-center">Past Transactions
+                                    </h1>
+                                </div>
+
+                                <div class="col text-center py-1 mb-1">
+                                    <div class="col text-center">
+                                        <a href="{{url_for('comic.past_sales')}}">
+                                            <img class="align-self-center mr-3" style="max-height: 80px"
+                                                src="../../static/image/add_red.png">
+
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Currently active items container -->
+        {%if length == 0%}
+        <div>
+            </br>
+            <h2 align="center" class="py-5 text-white">You currently have no active listings!</h2>
+            </br>
+        </div>
+        {% endif %}
+
+        <div class="card-deck row">
+
+            <link rel="stylesheet" href="../../static/css/style.css" type="text/css">
+
+            <!-- Loop card for each item being sold-->
+            {%for i in range(0, length)%}
+            {% if i%4 == 0 %}
+            <div class="col-sm-3 py-2 justify-content-center">
+                <div class="card">
+                    <a href="{{ url_for('comic.manage_item', id=comics[i].id) }}" target="_blank"
+                        class="stretched-link"><img class="card-img-top card-img" src="{{comics[i].comicImage}}"
+                            alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{comics[i].comicTitle}}</h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            {% elif i%4 == 1  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <a href="{{ url_for('comic.manage_item', id=comics[i].id) }}" target="_blank"
+                        class="stretched-link"><img class="card-img-top card-img" src="{{comics[i].comicImage}}"
+                            alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{comics[i].comicTitle}}</h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            {% elif i%4 == 2  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <a href="{{ url_for('comic.manage_item', id=comics[i].id) }}" target="_blank"
+                        class="stretched-link"><img class="card-img-top card-img" src="{{comics[i].comicImage}}"
+                            alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{comics[i].comicTitle}}</h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            {% else  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <a href="{{ url_for('comic.manage_item', id=comics[i].id) }}" target="_blank"
+                        class="stretched-link"><img class="card-img-top card-img" src="{{comics[i].comicImage}}"
+                            alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{comics[i].comicTitle}}</h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+
+    </section>
+
+</main>
+
+<link rel="stylesheet" href="../../static/css/style.css" type="text/css">
+</div>
+</main>
+{% endblock %}

@@ -1,0 +1,130 @@
+<!-- Links base.html -->
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<main class="container-fluid">
+    <section class=card-deck-container>
+
+        <!-- Results of Category Requested by user-->
+        <div>
+            <h1 class="text-white">Search Results: {{heading}}</h1>
+        </div>
+
+        {%if length == 0%}
+        <div>
+            </br>
+            <!--Text Shown if no item found by request-->
+            <h2 align="center" class="text-white">There are no comics for sale in that category!</h2>
+            </br>
+        </div>
+        {% endif %}
+
+        <div class="card-deck row">
+
+            <link rel="stylesheet" href="../../static/css/style.css" type="text/css">
+            <!-- Loop card for each item being sold-->
+            {%for i in range(0, length)%}
+            {% if i%4 == 0 %}
+            <div class="col-sm-3 py-2 justify-content-center">
+                <div class="card">
+                    <a href="{{ url_for('comic.show', id=comics[i].id) }}" target="_blank" class="stretched-link"><img
+                            class="card-img-top card-img" src="{{comics[i].comicImage}}" alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><b>{{comics[i].comicTitle}}</b></h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Seller</b>: {{comics[i].sellerName}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                        {% if comics[i].live ==True %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-success">Available</span></p>
+                        {% else %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-danger">Not Available</span></p>
+                        {% endif %}
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            {% elif i%4 == 1  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <a href="{{ url_for('comic.show', id=comics[i].id) }}" target="_blank" class="stretched-link"><img
+                            class="card-img-top card-img" src="{{comics[i].comicImage}}" alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><b>{{comics[i].comicTitle}}</b></h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Seller</b>: {{comics[i].sellerName}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                        {% if comics[i].live ==True %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-success">Available</span></p>
+                        {% else %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-danger">Not Available</span></p>
+                        {% endif %}
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            {% elif i%4 == 2  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <a href="{{ url_for('comic.show', id=comics[i].id) }}" target="_blank" class="stretched-link"><img
+                            class="card-img-top card-img" src="{{comics[i].comicImage}}" alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><b>{{comics[i].comicTitle}}</b></h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Seller</b>: {{comics[i].sellerName}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                        {% if comics[i].live ==True %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-success">Available</span></p>
+                        {% else %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-danger">Not Available</span></p>
+                        {% endif %}
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            {% else  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <a href="{{ url_for('comic.show', id=comics[i].id) }}" target="_blank" class="stretched-link"><img
+                            class="card-img-top card-img" src="{{comics[i].comicImage}}" alt="image not available"
+                            height=""></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><b>{{comics[i].comicTitle}}</b></h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Seller</b>: {{comics[i].sellerName}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                        {% if comics[i].live ==True %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-success">Available</span></p>
+                        {% else %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-danger">Not Available</span></p>
+                        {% endif %}
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+
+    </section>
+
+</main>
+
+{% endblock %}

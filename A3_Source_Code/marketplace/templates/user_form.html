@@ -1,0 +1,68 @@
+<!-- Links to base html -->
+{% extends "base.html" %}
+<!-- need to include this for bootstrap to render-->
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container justify-content-center">
+
+
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <p class="alert-info">{{ message }}</li>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <!-- Form rendering is simple and easy if using bootstrap -->
+
+    <!-- Container-->
+    <div class="container">
+        <div class="page-header text-white pt-3 pb-3">
+            <h1>{{heading}}</h1>
+          </div>
+      <div class="col-12 pt-1 pb-5">
+        <!--Jumbotron for Hero Section -->
+        <div class="jumbotron-fluid">
+
+          <div class="row justify-content-center mt-2">
+
+            <div class="col-md-10">
+
+              <div class="jumbotron shadow py-4 mb-0" style="background-color: rgb(59, 59, 59);">
+
+                <div class="text-center">
+
+
+                  <div class="text-white">
+                    <!--Style sheet to change CSS on button-->
+                    <link rel="stylesheet" href="../static/css/buttons.css" type="text/css">
+                    {{wtf.quick_form(form)}}
+                    <!--Style sheet to change CSS on form inputs-->
+                    <link rel="stylesheet" href="../static/css/formsInput.css" type="text/css">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- When user has login form, then show the user a link to register -->
+    {% if heading|lower =='login' %}
+    <div class="col-md-6 text-white pb-2">
+      <h4>New user? <a href="{{ url_for('auth.register') }}">Click here to register</a>.</h4>
+    </div>
+    <!-- When user has register form, then show the user a linkn to login -->
+    {% endif %}
+    {% if heading|lower =='register' %}
+    <div class="col-md-6 text-white pb-2">
+      <h4>Already a user? <a href="{{ url_for('auth.login') }}">Click here to login</a>.</h4>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

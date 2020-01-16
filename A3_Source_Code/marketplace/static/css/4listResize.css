@@ -1,0 +1,30 @@
+@media only screen and (max-width: 993px) {
+
+    .page-title {
+        font-size: 18px;
+    }
+
+    .card-title {
+        font-size:16px;
+    }
+
+    .card-text {
+        font-size:12px;
+    }
+
+}
+@media only screen and (max-width: 578px) {
+
+    .page-title {
+        font-size: 28px !important;
+    }
+
+    .card-title {
+        font-size:22px !important;
+    }
+
+    .card-text {
+        font-size:16px !important;
+    }
+
+}

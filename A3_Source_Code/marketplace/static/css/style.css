@@ -1,0 +1,74 @@
+.form-control {
+    color: white;
+}
+
+body {
+    background-color: rgb(26, 26, 26) !important;
+    font-family: Arial, Helvetica, sans-serif;   
+}
+
+input {
+    color:black;
+}
+
+.nav_bgcolor {
+    background-color: rgb(59, 59, 59);
+}
+
+.font {
+    color: white !important;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000 !important;
+    font-family:fantasy;
+}
+
+.card-deck-container {
+    margin-bottom: 1%;
+}
+
+.card-deck {
+    margin-bottom: 1%;
+}
+
+.more-info-text {
+    color: white;
+    font-size: 25px;
+}
+
+.container-fluid{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.card {
+    justify-content: center;
+    margin-bottom: 2%;
+    background-color: white;
+    color: black;
+}
+
+
+.modal-content{
+    background-color: rgb(59, 59, 59);  
+}
+
+.bg-colour {
+    background-color: rgb(59, 59, 59);
+}
+
+.welcome-user {
+    color: rgb(201, 145, 25);
+    text-shadow: 1px 1px rgb(0, 0, 0);
+}
+
+.manage-color-text {
+    color: black; 
+    font-size: 20px !important;  
+}
+
+

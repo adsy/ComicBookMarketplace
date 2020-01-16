@@ -1,0 +1,190 @@
+<!-- Links to base html and imports WTForms -->
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+
+
+<!--Jumbotron Welcome Introduction -->
+<div id="jumbotron">
+    <div class="jumbotron jumbotron-fluid" style="background-image: url(../static/image/comicbook.jpg)">
+        <div class="container">
+            <h1 class="display-4 font">Welcome, True Believers!</h1>
+            <p class="lead font">To the #1 marketplace for buying and selling all things comics!</p>
+        </div>
+    </div>
+</div>
+
+<div class="justify-content-center">
+
+
+    <!-- First Row container -->
+    <div class="col-12">
+
+        <!--Jumbotron for Hero Section -->
+        <div class="col-md-12">
+            <div class="bg-colour shadow pb-4 mb-4 ">
+
+                <div class="pt-3 mb-4 text-white">
+                    <h1 class="page-title text-white text-center">Search by category:
+                    </h1>
+                </div>
+
+                <div class="col text-center py-1 mb-1">
+                    <div class="col text-center">
+                        <!--Style sheet to change CSS on button-->
+                        <link rel="stylesheet" href="../static/css/buttons.css" type="text/css">
+                        {{wtf.quick_form(form)}}
+                        <!--Style sheet to change CSS on form inputs-->
+                        <link rel="stylesheet" href="../static/css/formsInput.css" type="text/css">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<main class="container-fluid">
+    <section class=card-deck-container>
+        <!-- If no comics are for sale-->
+        {%if length == 0%}
+        <div>
+            </br>
+            <h2 align="center" class="text-white">There are no current comics for sale!</h2>
+            </br>
+        </div>
+        {% endif %}
+        {%if length > 0%}
+        <!-- Top Selling Featured Comics Cards -->
+        <div>
+            <h1 class="text-white">Featured Comics</h1>
+        </div>
+        {% endif %}
+
+
+        <div class="card-deck row">
+
+            <link rel="stylesheet" href="../static/css/4listResize.css" type="text/css">
+            <!-- Copy this layout for this card in a for loop to create each comic book card-->
+            <!-- Flask code to generate the comics based off variables injected into the page-->
+            {%for i in range(0, length)%}
+            <!-- If first category is chosen-->
+            {% if i%4 == 0 %}
+            <div class="col-sm-3 py-2 justify-content-center">
+                <div class="card">
+                    <a href="{{ url_for('comic.show', id=comics[i].id) }}" target="_blank" class="stretched-link"><img
+                            class="card-img-top card-img" src="{{comics[i].comicImage}}" alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><b>{{comics[i].comicTitle}}</b></h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Seller</b>: {{comics[i].sellerName}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                        <!-- If first category is live show available-->
+                        {% if comics[i].live ==True %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-success">Available</span></p>
+                        <!-- If first category is not live show not available-->
+                        {% else %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-danger">Not Available</span></p>
+                        <!-- Passes to next category-->
+                        {% endif %}
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            <!-- If second category is chosen-->
+            {% elif i%4 == 1  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <a href="{{ url_for('comic.show', id=comics[i].id) }}" target="_blank" class="stretched-link"><img
+                            class="card-img-top card-img" src="{{comics[i].comicImage}}" alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><b>{{comics[i].comicTitle}}</b></h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Seller</b>: {{comics[i].sellerName}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                        <!-- If second category is live show available-->
+                        {% if comics[i].live ==True %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-success">Available</span></p>
+                        <!-- If second category is not live show not available-->
+                        {% else %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-danger">Not Available</span></p>
+                        <!-- Passes to next category-->
+                        {% endif %}
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            <!-- If third category is chosen-->
+            {% elif i%4 == 2  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <a href="{{ url_for('comic.show', id=comics[i].id) }}" target="_blank" class="stretched-link"><img
+                            class="card-img-top card-img" src="{{comics[i].comicImage}}" alt="image not available"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><b>{{comics[i].comicTitle}}</b></h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Seller</b>: {{comics[i].sellerName}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                        <!-- If third category is live show available-->
+                        {% if comics[i].live ==True %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-success">Available</span></p>
+                        <!-- If third category is not live show not available-->
+                        {% else %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-danger">Not Available</span></p>
+                        <!-- Passes to next category-->
+                        {% endif %}
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+            <!-- If fourth category is chosen-->
+            {% else  %}
+            <div class="col-sm-3 py-2">
+                <div class="card">
+
+                    <a href="{{ url_for('comic.show', id=comics[i].id) }}" target="_blank" class="stretched-link"><img
+                            class="card-img-top card-img" src="{{comics[i].comicImage}}" alt="image not available"
+                            height=""></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><b>{{comics[i].comicTitle}}</b></h3>
+                        <p class="card-text"><b>Author</b>: {{comics[i].comicAuthor}}</p>
+                        <p class="card-text"><b>Category</b>: {{comics[i].comicCategory}}</p>
+                        <p class="card-text"><b>ISBN-10</b>: {{comics[i].comicISBN}}</p>
+                        <p class="card-text"><b>Seller</b>: {{comics[i].sellerName}}</p>
+                        <p class="card-text"><b>Price</b>: ${{comics[i].comicPrice}}</p>
+                        <!-- If fourth category is live show available-->
+                        {% if comics[i].live ==True %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-success">Available</span></p>
+                        <!-- If fourth category is not live show not available-->
+                        {% else %}
+                        <p class="card-text"><b>Availability</b>: <span class="text-danger">Not Available</span></p>
+                        <!-- Passes to end-->
+                        {% endif %}
+                    </div>
+                    </article>
+
+                </div>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+
+    </section>
+
+</main>
+
+{% endblock %}

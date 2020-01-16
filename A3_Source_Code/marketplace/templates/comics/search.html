@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+<!-- need to include this for bootstrap to render-->
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+
+<div class="pt-5 row justify-content-center">
+
+    <!-- First Row container -->
+    <div class="col-12">
+
+        <!--Jumbotron for Hero Section -->
+        <div class="col-md-12">
+            <div class="bg-colour shadow pb-4 mb-4 ">
+
+                <div class="pt-3 mb-4 text-white">
+                    <h1 class="page-title text-white text-center">Search by category:
+                    </h1>
+                </div>
+
+                <div class="col text-center py-1 mb-1">
+                    <div class="col text-center">
+                        <!--Style sheet to change CSS on button-->
+                        <link rel="stylesheet" href="../static/css/buttons.css" type="text/css">
+                        {{wtf.quick_form(form)}}
+                        <!--Style sheet to change CSS on form inputs-->
+                        <link rel="stylesheet" href="../static/css/formsInput.css" type="text/css">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
